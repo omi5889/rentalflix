@@ -47,7 +47,7 @@ public class MovieServiceTest {
 		
 	@Test
 	public void testCreate (){
-		Movie imdb9 = new Movie(9,"Kung Fu Panda 12","2020","English",false);
+		Movie imdb9 = new Movie(9,"Fight Club","1999","English",false);
 		Assert.assertEquals(imdb9,ms.create(imdb9));
 	}
 	
@@ -59,7 +59,7 @@ public class MovieServiceTest {
 	
 	@Test
 	public void testDelete (){
-		Movie imdb4 = new Movie(4,"Pulp Fiction","1994","Hindi",false);
+		Movie imdb4 = new Movie(4,"Pulp Fiction","1994","English",false);
 		Assert.assertEquals(imdb4,ms.delete(4));
 		
 	}
@@ -76,7 +76,7 @@ public class MovieServiceTest {
 		Movie imdb1 = new Movie(1,"Shawshank Redemption","1994","English",false);
 		Movie imdb2 = new Movie(2,"The Godfather","1972","English",false);
 		Movie imdb3 = new Movie(3,"The Dark Knight","2008","English",false);
-		Movie imdb4 = new Movie(4,"Pulp Fiction","1994","Hindi",false);
+		Movie imdb4 = new Movie(4,"Pulp Fiction","1994","English",false);
 		Movie imdb5 = new Movie(5,"Schindler's List","1993","English",false);
 		Movie imdb6 = new Movie(6,"12 Angry Men","1957","English",false);
 		
@@ -94,7 +94,7 @@ public class MovieServiceTest {
 		Movie imdb1 = new Movie(1,"Shawshank Redemption","1994","English",false);
 		Movie imdb2 = new Movie(2,"The Godfather","1972","English",false);
 		Movie imdb3 = new Movie(3,"The Dark Knight","2008","English",false);
-		Movie imdb4 = new Movie(4,"Pulp Fiction","1994","Hindi",false);
+		Movie imdb4 = new Movie(4,"Pulp Fiction","1994","English",false);
 		Movie imdb5 = new Movie(5,"Schindler's List","1993","English",false);
 		Movie imdb6 = new Movie(6,"12 Angry Men","1957","English",false);
 		
