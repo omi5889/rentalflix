@@ -39,20 +39,8 @@ public class MovieService implements IFlix {
 	 }
 	 
 	 public Movie create (Movie movie){
-		/*int id;
-		String language,title,year;
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter movie id::");
-		id = sc.nextInt();
-		System.out.println("Enter title::");
-		title = sc.nextLine();
-		System.out.println("Enter year");
-		year = sc.nextLine();
-		System.out.println("Enter language");
-		language = sc.nextLine();*/
-		
+				
 		hmap.put(movie.getId(), movie);
-		
 		return movie;		
 		
 	 }
