@@ -14,13 +14,15 @@ import java.util.Scanner;
 
 
 public class MovieService implements IFlix {
-	 private static Hashtable<Integer,Movie> hmap = new Hashtable<Integer,Movie>();
+	 public static Hashtable<Integer,Movie> hmap = new Hashtable<Integer,Movie>();
 	 
 	 public List<Movie> findAll(){
-		 List<Movie> movieList = new ArrayList<Movie>();
+		 List<Movie> movieList = new ArrayList<Movie>();	 
+			 
 		 for(Map.Entry<Integer, Movie> movies: hmap.entrySet()){			  
 			 movieList.add(movies.getValue()); 
 		 }
+		 
 		 return movieList;
 	 }
 	 
@@ -31,11 +33,13 @@ public class MovieService implements IFlix {
 				 movieList.add(movies.getValue());				 
 			 }
 		 }
+		 
+		 
 		 return movieList;
 	 }
 	 
 	 public Movie create (Movie movie){
-		int id;
+		/*int id;
 		String language,title,year;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter movie id::");
@@ -45,15 +49,15 @@ public class MovieService implements IFlix {
 		System.out.println("Enter year");
 		year = sc.nextLine();
 		System.out.println("Enter language");
-		language = sc.nextLine();
+		language = sc.nextLine();*/
 		
-		movie = new Movie(id,title,year,language,false);
+		hmap.put(movie.getId(), movie);
+		
 		return movie;		
 		
 	 }
 	 
 	 public Movie update(Movie movie){
-		 
 		 for(Map.Entry<Integer, Movie> movies: hmap.entrySet()){
 			 if(movie.getTitle().equalsIgnoreCase(movies.getValue().getTitle())){
 				 synchronized(movies.getKey()){
@@ -63,30 +67,26 @@ public class MovieService implements IFlix {
 					 movies.getValue().setYear(movie.getYear());
 					 return movies.getValue();
 				 }
+			 }			 
+		 }
+		 
+			 throw new IllegalArgumentException();
+	 }
+	 
+	 public Movie delete(int id) {
+		 Movie deletedMovie=null;
+		 int deletedKey=-1;
+		 if(hmap.containsKey(id)){
+			 synchronized(hmap.get(deletedKey)){
+				 deletedMovie = hmap.get(deletedKey);
+				 hmap.remove(deletedKey);
+				 return deletedMovie;
 			 }
 			 
 		 }
-		 return movie;
+		 else
+			 throw new IllegalArgumentException();		 
 		 
-	 }
-	 
-	 public Movie delete(int id){
-		 Movie deletedMovie=null;
-		 int deletedKey=-1;
-		 for(Map.Entry<Integer, Movie> movies: hmap.entrySet()){
-			 if(movies.getKey()==id){
-				 
-					 deletedKey = movies.getKey();	
-					 deletedMovie = movies.getValue();
-					 break;
-				 
-			 }			 
-		 }
-		 synchronized(hmap.get(deletedKey)){
-			 hmap.remove(deletedKey);
-		 }
-		 
-		 return deletedMovie;
 	 }
 	 
 	 public boolean rentMovie (int movieId, String user){
